@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+abstract class Shape {//abstract shape that has width as atribute
+    int width;
+    abstract void area();
+    
+}
+
+public class Square extends Shape{ //subclass of Shape hereda Width, se declara area 
+    int area; 
+
+    public Square(int width){ //constructor que recibe valores de main
+        this.width=width;//los hereda automaticamente de la clase padre
+    }
+    
+@Override //palabra reservada que dice que se va a sobreescribir el metodo abstracto
+    public void area(){ // debe ser igual a la clase padre es decir no devuelve nada y mismo nombre 
+         area = width*width;
+         System.out.println(area);
+    }
+
+
+}
+
+public class Circle extends Shape{ //subclace que crea forma circulo
+
+    double area;
+
+    public Circle(int width){//constructor que crea un circulo cuando recibe parametro de main
+        this.width = width;
+    }
+
+    
+@Override //palabra reservada que va a modificar el metodo abstracto area 
+    public void area(){
+         area = Math.PI*width*width;
+         System.out.println(area);
+    }
+
+}
+
+
+
+public class Program { //programa principal
+    public static void main(String[ ] args) {
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        int y = sc.nextInt();//introduce valores
+        
+        Square a = new Square(x); //se crean instancias de cuadrado y circulo 
+        Circle b = new Circle(y);
+        a.area(); //llama a funcion area y muestra valor 
+        b.area();
+    }
+}
